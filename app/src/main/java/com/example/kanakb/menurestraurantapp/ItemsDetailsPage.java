@@ -47,8 +47,7 @@ public class ItemsDetailsPage extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 quantity = adapterView.getItemAtPosition(i).toString();
-                list.add(quantity);
-                addListernerOnButton(list);
+              addListernerOnButton(s,quantity);
             }
 
             @Override
@@ -64,7 +63,7 @@ public class ItemsDetailsPage extends AppCompatActivity {
 
 
 
-    private void addListernerOnButton(final ArrayList<String> list ){
+    private void addListernerOnButton(final String s,final String quantity ){
      button =(Button)findViewById(R.id.btnAddCart);
         button.setOnClickListener(new View.OnClickListener() {
 
@@ -72,9 +71,8 @@ public class ItemsDetailsPage extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent myIntent=new Intent(getApplicationContext(),Cart.class);
-                myIntent.putStringArrayListExtra("data",list);
-//                myIntent.putExtra("food_name", s);
-//                myIntent.putExtra("quantity",quantity);
+                myIntent.putExtra("food_name", s);
+                myIntent.putExtra("quantity",quantity);
                 startActivity(myIntent);
 
 //                Toast.makeText(MyAndroidAppActivity.this,

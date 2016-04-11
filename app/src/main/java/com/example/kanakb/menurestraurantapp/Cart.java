@@ -2,20 +2,16 @@ package com.example.kanakb.menurestraurantapp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class Cart extends AppCompatActivity {
 
-    TextView textView,textViewq;
 
-    ArrayList<ArrayList<String>> list = new ArrayList<>();
+    ArrayList<Food> arrayOfFood = new ArrayList<>();
 
     /** Declaring an ArrayAdapter to set items to ListView */
-    ArrayAdapter<ArrayList<String>> adapter;
     ListView listView;
 
     @Override
@@ -23,21 +19,25 @@ public class Cart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
+//        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
+
+        FoodAdapter adapter = new FoodAdapter(this, arrayOfFood);
 
 //        textView=(TextView)findViewById(R.id.textView2);
 //        textViewq=(TextView)findViewById(R.id.textView3);
 
         listView=(ListView)findViewById(R.id.list);
-
-
-
-
-        //String s=getIntent().getStringExtra("food_name_cart");
+        listView.setAdapter(adapter);
         Bundle extras = getIntent().getExtras();
 
-        list.add(extras.getStringArrayList("data"));
-        listView.setAdapter(adapter);
+        Food newFood=new Food(extras.getString("food_name"),extras.getString("quantity"));
+
+        adapter.add(newFood);
+
+        //String s=getIntent().getStringExtra("food_name_cart");
+
+
+
 
 
 
