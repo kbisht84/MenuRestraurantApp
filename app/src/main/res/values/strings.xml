@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MenuRestraurantApp</string>
+
+    <string name="quantity_prompt">Choose quantity</string>
+
+    <string-array name="quantity_arrays">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string name="title_activity_cart">Cart</string>
+</resources>
